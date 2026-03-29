@@ -6,7 +6,9 @@ export interface AuthUser {
   username: string;
   displayName: string;
   role: string;
-  token: string;
+  tokens: {
+    accessToken: string;
+  };
 }
 
 @Injectable({ providedIn: 'root' })
@@ -22,7 +24,7 @@ export class AuthService {
   login(response: AuthUser): void {
     sessionStorage.setItem('auth_user', JSON.stringify(response));
     this.currentUser.set(response);
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   logout(): void {
@@ -32,7 +34,8 @@ export class AuthService {
   }
 
   getToken(): string | null {
-    return this.currentUser()?.token ?? null;
+    // console.log('Getting token for user:', this.currentUser());
+    return this.currentUser()?.tokens?.accessToken ?? null;
   }
 
   private loadFromStorage(): AuthUser | null {

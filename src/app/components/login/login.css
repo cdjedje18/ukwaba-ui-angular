@@ -1,0 +1,53 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.status-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--mat-sys-on-surface-variant);
+}
+
+.status-ok {
+    color: #2e7d32;
+    font-weight: 500;
+}
+
+.status-error {
+    color: #c62828;
+    font-weight: 500;
+}
+
+.status-pending {
+    color: #e65100;
+    font-weight: 500;
+}
+
+.status-pending code {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.login-error {
+    color: #c62828;
+    margin: 0;
+}
