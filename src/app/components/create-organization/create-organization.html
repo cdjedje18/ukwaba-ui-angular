@@ -1,0 +1,65 @@
+<div class="create-org-container">
+  <mat-card class="create-org-card">
+    <mat-card-header>
+      <mat-card-title>Create New Organization</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (error()) {
+        <div class="error-message">
+          {{ error() }}
+        </div>
+      }
+
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Organization Name</mat-label>
+          <input
+            matInput
+            [(ngModel)]="name"
+            [ngModelOptions]="{ updateOn: 'change' }"
+            placeholder="Enter organization name"
+            [disabled]="loading()"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="description"
+            [ngModelOptions]="{ updateOn: 'change' }"
+            placeholder="Enter organization description"
+            [disabled]="loading()"
+            rows="4"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="createOrganization()"
+          [disabled]="loading()"
+        >
+          @if (loading()) {
+            <mat-spinner diameter="20"></mat-spinner>
+            Creating...
+          } @else {
+            Create Organization
+          }
+        </button>
+        <button
+          mat-stroked-button
+          (click)="goBack()"
+          [disabled]="loading()"
+        >
+          Cancel
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

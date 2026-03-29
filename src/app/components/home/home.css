@@ -4,11 +4,31 @@
     /* align-items: center; */
     /* min-height: 100vh; */
     padding: 16px;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .login-card {
     width: 100%;
     max-width: 400px;
+    cursor: pointer;
+}
+
+.add-org-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.add-org-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.add-org-action {
+    color: white !important;
+    font-weight: 600;
+    font-size: 16px;
 }
 
 .login-form {
