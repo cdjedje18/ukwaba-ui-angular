@@ -1,0 +1,71 @@
+<div class="show-org-container">
+  @if (loading()) {
+    <mat-card class="loading-card">
+      <mat-card-content>
+        <mat-spinner></mat-spinner>
+        <p>Loading organization details...</p>
+      </mat-card-content>
+    </mat-card>
+  } @else if (error()) {
+    <mat-card class="error-card">
+      <mat-card-content>
+        <div class="error-message">
+          <mat-icon>error</mat-icon>
+          <p>{{ error() }}</p>
+          <button mat-raised-button color="primary" (click)="goBack()">
+            Go Back
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  } @else if (organization()) {
+    <mat-card class="show-org-card">
+      <mat-card-header>
+        <button mat-icon-button (click)="goBack()" class="back-button">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <mat-card-title>{{ organization().name }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="org-details">
+          <div class="detail-item">
+            <label>Organization ID:</label>
+            <p>{{ organization().id }}</p>
+          </div>
+
+          @if (organization().description) {
+            <div class="detail-item">
+              <label>Description:</label>
+              <p>{{ organization().description }}</p>
+            </div>
+          }
+
+          @if (organization().created_at) {
+            <div class="detail-item">
+              <label>Created At:</label>
+              <p>{{ organization().created_at | date: 'medium' }}</p>
+            </div>
+          }
+
+          @if (organization().updated_at) {
+            <div class="detail-item">
+              <label>Last Updated:</label>
+              <p>{{ organization().updated_at | date: 'medium' }}</p>
+            </div>
+          }
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-stroked-button (click)="goBack()">
+          Go Back
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteOrganization()">
+          <mat-icon>delete</mat-icon>
+          Delete Organization
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  }
+</div>

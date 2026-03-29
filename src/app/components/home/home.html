@@ -12,7 +12,7 @@
     </mat-card>
 
     @for (item of organizations(); track item.id) {
-      <mat-card class="login-card">
+      <mat-card class="login-card" [routerLink]="['/organizations', item.id]">
           <mat-card-header>
               <mat-card-title>{{ item.name }}</mat-card-title>
           </mat-card-header>
